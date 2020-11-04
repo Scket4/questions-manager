@@ -1,0 +1,40 @@
+{
+  "name": "questions-manager",
+  "version": "1.0.0",
+  "description": "Site, where people can ask me questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode devlopment --open",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scket4/questions-manager.git"
+  },
+  "keywords": [
+    "js",
+    "html",
+    "css",
+    "git",
+    "scket4"
+  ],
+  "author": "Alex Golubev <alexeygolubev921@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scket4/questions-manager/issues"
+  },
+  "homepage": "https://github.com/Scket4/questions-manager#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestionManager</title>
+</head>
+<body>
+  <div class="login">
+    <p class="login__p">Вход</p>
+    <form action="" method="GET" class="login__form">
+      <input type="email" name="mail" id="mail" placeholder="Почта" >
+      <input type="password" name="pass" id="pass" placeholder="Пароль">
+      <button type="submit" class="login__button">Вход</button>
+    </form>
+  </div>  
+  <header class="header">
+    <div class="header__title">Менеджер вопросов</div>
+    <nav class="header__navigation">
+      <li id="login">Войти</li>
+      <li id="singup">Зарегистрироваться</li>
+    </nav>
+  </header>
+  <main class="main">
+    <h1 class="main__title">Задай вопрос Алексею:</h1>
+    <form action="" method="get" class="main__form" id="form">
+      <input type="text" autocomplete="off" name="question" id="question" class="main__question" placeholder="Ваш вопрос">
+      <button class="main__button" id="button">Отправить вопрос</button>
+    </form>
+    <br>
+    <div class="main__current-questions">
+      <p>Ваши вопросы:</p>
+      <br>
+      <div class="current-questions"></div>
+    </div>
+  </main>
+  <footer class="footer"></footer>
+</body>
+</html>
