@@ -1,18 +1,17 @@
 import { authWithEmailAndPass } from './auth'
 import { Question } from './question'
 import './style.css'
-import {isValid, login} from './utils'
+import {clearLoginModal, isValid, login, toCard} from './utils'
 
 const form = document.getElementById('form')
 const input = form.querySelector('#question')
 const button = form.querySelector('#button')
-const alertButton = document.querySelector('.alert__button')
 const loginButton = document.getElementById('login')
 const loginForm = document.querySelector('.login')
 
 button.disabled = true
 
-window.addEventListener('load', Question.renderList)
+// window.addEventListener('load', Question.renderList)
 form.addEventListener('submit', submitFormHandler)
 input.addEventListener('input', () => {
   button.disabled = !isValid(input.value)
@@ -39,10 +38,28 @@ function submitFormHandler(event) {
 
 function loginSubmitFn(event) {
   event.preventDefault()
+  const btn = document.querySelector('.login__button')
 
   const email = event.target.querySelector('#mail').value
   const pass = event.target.querySelector('#pass').value
-  console.log(email, pass);
+  btn.disabled = true
   authWithEmailAndPass(email, pass)
   .then(Question.fetch)
+  .then(renderModalAfterAuth)
+  .then(() => btn.disabled = false)
+}
+
+function renderModalAfterAuth(content) {
+  if (typeof content === 'string') {
+    const list = document.querySelector('.current-questions')
+    list.innerHTML = `<p>Ошибка: ${content}</p>`
+    clearLoginModal()
+  } else {
+    const list = document.querySelector('.current-questions')
+    const html = content.length 
+    ? content.map(toCard).join('')
+    : '<p>У вас вопросов нет!!!</p>'
+    list.innerHTML = html
+    clearLoginModal()
+  }
 }

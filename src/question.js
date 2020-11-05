@@ -1,3 +1,5 @@
+import { toCard } from "./utils"
+
 export class Question {
   static create(text) {
     return fetch('https://question-manager-a28e1.firebaseio.com/questions.json', {
@@ -28,9 +30,20 @@ export class Question {
   }
 
   static fetch(token) {
+    if (!token) {
+      return Promise.resolve('<p class="error">У вас нет токена</p>')
+    }
     return fetch(`https://question-manager-a28e1.firebaseio.com/questions.json?auth=${token}`)
       .then(response => response.json())
-      .then(q => console.log(q))
+      .then(question => {
+        if (question.error) {
+          return  `<p class="error">Нет токена</p>`
+        }
+        return question ? Object.keys(question).map(key => ({
+          ...question[key],
+          id: key
+        })) : []
+      })
   }
 }
 
@@ -44,13 +57,3 @@ function getQuestionsFromLocalstorage() {
   return JSON.parse(localStorage.getItem('questions') || '[]')
 }
 
-function toCard(text) {
-  return `
-  <div class="question">
-  <p class="question__question">Ваш вопрос:</p>
-  <div>${new Date(text.date).toLocaleDateString()}</div>
-  <p class="question__text">${text.text}</p>
-  </div>
-  <br>
-  `
-}

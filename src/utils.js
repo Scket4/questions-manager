@@ -22,3 +22,14 @@ export function clearLoginModal() {
   footer.classList.remove('filter')
   loginModal.classList.remove('visible')
 }
+
+export function toCard(text) {
+  return `
+  <div class="question">
+  <p class="question__question">Ваш вопрос:</p>
+  <div>${new Date(text.date).toLocaleDateString()}</div>
+  <p class="question__text">${text.text}</p>
+  </div>
+  <br>
+  `
+}

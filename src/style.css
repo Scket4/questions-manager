@@ -164,6 +164,10 @@ body {
   transition: all ease .3s;
 }
 
+.login__button:disabled {
+  filter: blur(1px);
+}
+
 .login__button:hover {
   transform: scale(1.02);
 }
@@ -199,4 +203,8 @@ body {
 
 .question__question {
   font-weight: 600;
+}
+
+.error {
+  color: red;
 }
